@@ -1,0 +1,711 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Diatom Reference</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Diatom Playground -->
+        <script type="module">
+            import init, {get_version, compile} from "https://diatom-lang.github.io/diatom-playground/pkg/diatom_playground.js";
+            init().then(()=>{});
+            window.compile = compile;
+        </script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="Overview.html">The Diatom Reference</a></li><li class="chapter-item expanded "><a href="grammar/Overview.html"><strong aria-hidden="true">1.</strong> Grammar</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="grammar/Tokens.html"><strong aria-hidden="true">1.1.</strong> Tokens</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="grammar/tokens/Identifier.html"><strong aria-hidden="true">1.1.1.</strong> Identifier</a></li><li class="chapter-item expanded "><a href="grammar/tokens/Keyword.html"><strong aria-hidden="true">1.1.2.</strong> Keyword</a></li><li class="chapter-item expanded "><a href="grammar/tokens/Number.html"><strong aria-hidden="true">1.1.3.</strong> Numeric Literal</a></li><li class="chapter-item expanded "><a href="grammar/tokens/String.html"><strong aria-hidden="true">1.1.4.</strong> String Literal</a></li><li class="chapter-item expanded "><a href="grammar/tokens/Operator.html"><strong aria-hidden="true">1.1.5.</strong> Operator</a></li><li class="chapter-item expanded "><a href="grammar/tokens/Comment.html"><strong aria-hidden="true">1.1.6.</strong> Comment</a></li></ol></li><li class="chapter-item expanded "><a href="grammar/Expressions.html"><strong aria-hidden="true">1.2.</strong> Expressions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="grammar/exprs/Constant.html"><strong aria-hidden="true">1.2.1.</strong> Constant Expression</a></li><li class="chapter-item expanded "><a href="grammar/exprs/Operator.html"><strong aria-hidden="true">1.2.2.</strong> Operator Expression</a></li><li class="chapter-item expanded "><a href="grammar/exprs/If.html"><strong aria-hidden="true">1.2.3.</strong> If Expression</a></li><li class="chapter-item expanded "><a href="grammar/exprs/Case.html"><strong aria-hidden="true">1.2.4.</strong> Case Expression</a></li><li class="chapter-item expanded "><a href="grammar/exprs/Block.html"><strong aria-hidden="true">1.2.5.</strong> Block Expression</a></li><li class="chapter-item expanded "><a href="grammar/exprs/Lambda.html"><strong aria-hidden="true">1.2.6.</strong> Lambda Expression</a></li><li class="chapter-item expanded "><a href="grammar/exprs/Require.html"><strong aria-hidden="true">1.2.7.</strong> Require Expression</a></li></ol></li><li class="chapter-item expanded "><a href="grammar/Statements.html"><strong aria-hidden="true">1.3.</strong> Statements</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="grammar/stmts/Data.html"><strong aria-hidden="true">1.3.1.</strong> Data Type Statement</a></li><li class="chapter-item expanded "><a href="grammar/stmts/Loop.html"><strong aria-hidden="true">1.3.2.</strong> Loop Statement</a></li><li class="chapter-item expanded "><a href="grammar/stmts/Function.html"><strong aria-hidden="true">1.3.3.</strong> Function Statement</a></li><li class="chapter-item expanded "><a href="grammar/stmts/Flow.html"><strong aria-hidden="true">1.3.4.</strong> Flow Control Statement</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="names/Overview.html"><strong aria-hidden="true">2.</strong> Names</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="names/Scope.html"><strong aria-hidden="true">2.1.</strong> Scope</a></li><li class="chapter-item expanded "><a href="names/Binding.html"><strong aria-hidden="true">2.2.</strong> Binding and Capture</a></li><li class="chapter-item expanded "><a href="names/Module.html"><strong aria-hidden="true">2.3.</strong> Module System</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Diatom Reference</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-diatom-reference"><a class="header" href="#the-diatom-reference">The Diatom Reference</a></h1>
+<p><strong>NOTE: This book is working in progress...</strong></p>
+<p>This book is the reference for <strong>the Diatom Programming Language</strong>.</p>
+<h2 id="about"><a class="header" href="#about">About</a></h2>
+<p>Diatom is an <a href="https://en.wikipedia.org/wiki/Scripting_language">embedded scripting language</a> aiming to make scripting easy, secure and maintainable without compromised with speed.</p>
+<h2 id="try-diatom"><a class="header" href="#try-diatom">Try Diatom</a></h2>
+<p>Use our online <a href="https://diatom-lang.github.io/diatom-playground/">playground</a> to try diatom without install anything.</p>
+<h2 id="get-diatom"><a class="header" href="#get-diatom">Get Diatom</a></h2>
+<p>Diatom is available at <a href="https://crates.io/crates/diatom">crates.io</a>.</p>
+<p>The latest API documentation is available <a href="https://diatom-lang.github.io/diatom/">here</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="grammar"><a class="header" href="#grammar">Grammar</a></h1>
+<p>This chapter is about the grammar of diatom.</p>
+<h2 id="general-grammar-rules"><a class="header" href="#general-grammar-rules">General Grammar Rules</a></h2>
+<p>Diatom's grammar is design around the following concept in mind:</p>
+<ul>
+<li><strong>No delimiter</strong>: Statements and Expressions does not require <code>newline</code> or <code>;</code> to be separated from each other. That means <code>a = 1 b = 2</code> is a perfectly fine line of code.</li>
+<li><strong>Fewer Punctuations</strong>: Diatom significantly reduces the need of redundant punctuations like <code>() {}</code> pairs. Blocks uses keywords instead of <code>{}</code> and tuples does not need to be surrounded by <code>()</code>. Instead just write <code>a,b</code> is enough to make a tuple. <code>[1 2 3]</code> is a good list in diatom, no comma is required or allowed.</li>
+<li><strong>Format independent syntax</strong>: Diatom does not use so called significant whitespace in its grammar. You are free to format you code without changing its meanings. To prevent unintended behaviors, most of the grammar requires some kind of terminator like <code>if ... then ... end</code> so user will not accidentally write to wrong scopes.</li>
+<li><strong>Expression based</strong>: Every expression( including block ) has a return value. Simply put an expression at the end of the block will automatically return its value. For example, <code>fn x = x + 1</code> will just return <code>x + 1</code>, no <code>return</code> is needed.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tokens"><a class="header" href="#tokens">Tokens</a></h1>
+<p>Tokens are the result of lexical analysis performed by the compiler.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="identifier"><a class="header" href="#identifier">Identifier</a></h1>
+<blockquote>
+<p><strong>Syntax</strong><br />
+Identifier:  [_a-zA-Z][_0-9a-zA-Z]*</p>
+<p><strong>Note</strong>: Unicode identifier is allowed but discouraged.</p>
+</blockquote>
+<p>A valid identifier is a sequence of characters that satisfies the following conditions:</p>
+<ul>
+<li>The sequence must not start with <code>'0'..'9'</code>.</li>
+<li>The sequence must not contains whitespace characters, namely <code>' ', '\r', '\n', '\t'</code> .</li>
+<li>The sequence must not contains any ascii symbols like <code>?#$@%...</code> .</li>
+<li>Unicode characters may be used. For example, <code>🐱🐶</code> is valid identifier.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="keywords"><a class="header" href="#keywords">Keywords</a></h1>
+<blockquote>
+<p><strong>Syntax</strong><br />
+Keyword:<br />
+&quot;where&quot;<br />
+| &quot;until&quot;<br />
+| &quot;end&quot;<br />
+| &quot;if&quot;<br />
+| &quot;then&quot;<br />
+| &quot;else&quot;<br />
+| &quot;elsif&quot;<br />
+| &quot;case&quot;<br />
+| &quot;of&quot;<br />
+| &quot;in&quot;<br />
+| &quot;for&quot;<br />
+| &quot;do&quot;<br />
+| &quot;assert&quot;<br />
+| &quot;return&quot;<br />
+| &quot;break&quot;<br />
+| &quot;continue&quot;<br />
+| &quot;loop&quot;<br />
+| &quot;data&quot;<br />
+| &quot;def&quot;<br />
+| &quot;fn&quot;<br />
+| &quot;begin&quot;<br />
+| &quot;and&quot;<br />
+| &quot;or&quot;<br />
+| &quot;not&quot;<br />
+| &quot;fn&quot;<br />
+| &quot;require&quot;</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="numeric-literal"><a class="header" href="#numeric-literal">Numeric Literal</a></h1>
+<blockquote>
+<p><strong>Syntax</strong><br />
+Number:<br />
+( [ 0 ] [ Xx ] [ _0-9a-fA-F ]+)<br />
+|( [ 0 ] [ Bb ] [ _0-1 ]+)<br />
+|( [ 0 ] [ Oo ] [ _0-7 ]+)<br />
+|( [ 0-9 ] [ _0-9 ]* ( \.[ _0-9 ]+ ){0,1} ( [ Ee ] [ \+\- ]{0,1} [ 0-9_ ]* ){0, 1} )</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Literals*</th><th style="text-align: left">Example</th><th style="text-align: left">Exponentiation</th></tr></thead><tbody>
+<tr><td style="text-align: left">Decimal integer</td><td style="text-align: left"><code>123_456</code></td><td style="text-align: left">N/A</td></tr>
+<tr><td style="text-align: left">Hex integer</td><td style="text-align: left"><code>0xff1</code></td><td style="text-align: left">N/A</td></tr>
+<tr><td style="text-align: left">Octal integer</td><td style="text-align: left"><code>0o72</code></td><td style="text-align: left">N/A</td></tr>
+<tr><td style="text-align: left">Binary integer</td><td style="text-align: left"><code>0b1111_0100</code></td><td style="text-align: left">N/A</td></tr>
+<tr><td style="text-align: left">Floating point</td><td style="text-align: left"><code>12.23e-5</code></td><td style="text-align: left">Optional</td></tr>
+</tbody></table>
+</div>
+<p>*: All number literals allow _ as a visual separator: <code>1_234.0E+18</code><br />
+*: All characters are case insensitive.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="string-literal"><a class="header" href="#string-literal">String Literal</a></h1>
+<p>String literals are any characters surrounded by a pair of <code>&quot;</code> or <code>'</code>. Any utf-8 characters may be included. To use special characters, you may put a <code>\</code> before that escape sequence. Here is a list of all escape sequence.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+String:<br />
+' ( [^\\] | EscapeSequence | \\' )* '<br />
+| &quot; ( [^\\] | EscapeSequence | \\&quot; )* &quot;</p>
+<p>EscapeSequence:<br />
+\\x [0-7]{2}<br />
+| \\u [0-9a-fA-F]{4}<br />
+| \\U [0-9a-fA-F]{8}<br />
+| \\r | \\n | \\t | \\</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Escapes</th><th style="text-align: left">Character</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>\\</code></td><td style="text-align: left">backslash</td></tr>
+<tr><td style="text-align: left"><code>\r</code></td><td style="text-align: left">Newline</td></tr>
+<tr><td style="text-align: left"><code>\n</code></td><td style="text-align: left">Carriage return</td></tr>
+<tr><td style="text-align: left"><code>\t</code></td><td style="text-align: left">Tab</td></tr>
+<tr><td style="text-align: left"><code>\x41</code></td><td style="text-align: left">7 bit character code (exactly 2 hex numbers*)</td></tr>
+<tr><td style="text-align: left"><code>\u00E9</code></td><td style="text-align: left">16bit unicode escape(exactly 4 hex numbers*)</td></tr>
+<tr><td style="text-align: left"><code>\U000000E9</code></td><td style="text-align: left">16bit unicode escape(exactly 8 hex numbers*)</td></tr>
+</tbody></table>
+</div>
+<p>*: All hex numbers ignore case. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="operators"><a class="header" href="#operators">Operators</a></h1>
+<blockquote>
+<p><strong>Syntax</strong>:
+Operator:<br />
+<code>&lt;singular operator&gt;</code><br />
+| $ \( <code>&lt;expression&gt;</code>* \)<br />
+| $ \[ <code>&lt;expression&gt;</code>* \]<br />
+| $ \{ (<code>&lt;expression&gt;</code>*) | (<code>&lt;identifier&gt;</code> : <code>&lt;expression&gt;</code>)* \}</p>
+</blockquote>
+<p>Here is a list of all operators.</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Operator</th><th style="text-align: left">Meaning</th><th style="text-align: left">Example</th><th style="text-align: left">Precedence (left and right)</th></tr></thead><tbody>
+<tr><td style="text-align: left">.</td><td style="text-align: left">access member</td><td style="text-align: left"><code>list.len$()</code></td><td style="text-align: left">21,22</td></tr>
+<tr><td style="text-align: left">not</td><td style="text-align: left">logic not</td><td style="text-align: left"><code>not false</code></td><td style="text-align: left">19(prefix)</td></tr>
+<tr><td style="text-align: left">$()</td><td style="text-align: left">function call</td><td style="text-align: left"><code>f$()</code></td><td style="text-align: left">20(postfix)</td></tr>
+<tr><td style="text-align: left">$[]</td><td style="text-align: left">index array</td><td style="text-align: left"><code>list$[0]</code></td><td style="text-align: left">20(postfix)</td></tr>
+<tr><td style="text-align: left">${}</td><td style="text-align: left">data constructor</td><td style="text-align: left"><code>Just${1}</code></td><td style="text-align: left">20(postfix)</td></tr>
+<tr><td style="text-align: left">**</td><td style="text-align: left">power</td><td style="text-align: left"><code>2**3</code></td><td style="text-align: left">17,18</td></tr>
+<tr><td style="text-align: left">*</td><td style="text-align: left">multiply</td><td style="text-align: left"><code>2*3</code></td><td style="text-align: left">15,16</td></tr>
+<tr><td style="text-align: left">//</td><td style="text-align: left">integer division</td><td style="text-align: left"><code>7//3</code></td><td style="text-align: left">15,16</td></tr>
+<tr><td style="text-align: left">/</td><td style="text-align: left">division</td><td style="text-align: left"><code>7/3</code></td><td style="text-align: left">15,16</td></tr>
+<tr><td style="text-align: left">%</td><td style="text-align: left">modular</td><td style="text-align: left"><code>5%2</code></td><td style="text-align: left">15,16</td></tr>
+<tr><td style="text-align: left">+</td><td style="text-align: left">addiction</td><td style="text-align: left"><code>1+2</code></td><td style="text-align: left">13,14</td></tr>
+<tr><td style="text-align: left">-</td><td style="text-align: left">subtract or negative value</td><td style="text-align: left"><code>1-2</code> <code>-2</code></td><td style="text-align: left">101(prefix) 13,14(infix)</td></tr>
+<tr><td style="text-align: left">&gt;</td><td style="text-align: left">greater than</td><td style="text-align: left"><code>5&gt;4</code></td><td style="text-align: left">11,12</td></tr>
+<tr><td style="text-align: left">&gt;=</td><td style="text-align: left">greater than or equal to</td><td style="text-align: left"><code>4&gt;=3</code></td><td style="text-align: left">11,12</td></tr>
+<tr><td style="text-align: left">&lt;</td><td style="text-align: left">less than</td><td style="text-align: left"><code>2&lt;6</code></td><td style="text-align: left">11,12</td></tr>
+<tr><td style="text-align: left">&lt;=</td><td style="text-align: left">less than or equal to</td><td style="text-align: left"><code>5&lt;=5</code></td><td style="text-align: left">11,12</td></tr>
+<tr><td style="text-align: left">==</td><td style="text-align: left">equal to</td><td style="text-align: left"><code>3==3</code></td><td style="text-align: left">11,12</td></tr>
+<tr><td style="text-align: left">&lt;&gt;</td><td style="text-align: left">not equal to</td><td style="text-align: left"><code>5&lt;&gt;4</code></td><td style="text-align: left">11,12</td></tr>
+<tr><td style="text-align: left">and</td><td style="text-align: left">logic and</td><td style="text-align: left"><code>true and false</code></td><td style="text-align: left">9, 10</td></tr>
+<tr><td style="text-align: left">or</td><td style="text-align: left">logic or</td><td style="text-align: left"><code>true or false</code></td><td style="text-align: left">7,8</td></tr>
+<tr><td style="text-align: left">..</td><td style="text-align: left">range</td><td style="text-align: left"><code>1..10</code></td><td style="text-align: left">5,6</td></tr>
+<tr><td style="text-align: left">,</td><td style="text-align: left">create a tuple</td><td style="text-align: left"><code>1,2,3</code></td><td style="text-align: left">3,4</td></tr>
+<tr><td style="text-align: left">=</td><td style="text-align: left">assign value to variable</td><td style="text-align: left"><code>a=5</code></td><td style="text-align: left">2,1</td></tr>
+<tr><td style="text-align: left">:</td><td style="text-align: left">N/A</td><td style="text-align: left">N/A</td><td style="text-align: left">N/A</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="comment"><a class="header" href="#comment">Comment</a></h1>
+<p>Comment starts with <code>--</code> and lasts until the end of current line.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+Comment:<br />
+\-\- [^\n]*</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="expressions"><a class="header" href="#expressions">Expressions</a></h1>
+<p>All expressions in diatom has a return value.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+Expression:<br />
+BlockExpression<br />
+| CaseExpression<br />
+| ConstantExpression<br />
+| IfExpression<br />
+| LambdaExpression<br />
+| OperatorExpression<br />
+| RequireExpression</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="constant-values"><a class="header" href="#constant-values">Constant values</a></h1>
+<p>Constant values or built in data structures. Diatom has <code>dictionary</code>, <code>set</code>, <code>tuple</code> and <code>list</code> as built in data structures.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+ConstantExpression:<br />
+<code>&lt;number&gt;</code> | <code>&lt;string&gt;</code> | true | false | \( \)<br />
+| \{ <code>&lt;expression&gt;</code>* }<br />
+| \{ : \} | \{ (<code>&lt;expression&gt;</code>:<code>&lt;expression&gt;</code>)* \}<br />
+| \[ (<code>&lt;expression&gt;</code>)* \]<br />
+| <code>&lt;identifier&gt;</code></p>
+</blockquote>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<pre><code class="language-diatom">0x123 -- numerical literal
+
+&quot;abc&quot; -- string literal
+
+true false -- boolean value
+
+() -- unit type value
+
+-- list
+[]
+[ 1 2 3 ]
+
+-- set
+{}
+{ 1 2 3 }
+
+-- dictionary
+{:}
+{ &quot;key1&quot;: 1 &quot;key2&quot;: 2 &quot;key3&quot;: 3 }
+
+-- tuple (Must contains at least two elements)
+a,b,c
+a,(b,c) -- use parentheses for precedence
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="operator-expressions"><a class="header" href="#operator-expressions">Operator Expressions</a></h1>
+<p>For operators and precedences, see <a href="grammar/exprs/../Tokens.html"><em>Operators</em></a>.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+OperatorExpression:<br />
+<code>&lt;prefix&gt;</code> <code>&lt;expression&gt;</code><br />
+| <code>&lt;expression&gt;</code> <code>&lt;infix&gt;</code> <code>&lt;expression&gt;</code><br />
+| <code>&lt;expression&gt;</code> <code>&lt;postfix&gt;</code></p>
+</blockquote>
+<h2 id="examples-1"><a class="header" href="#examples-1">Examples</a></h2>
+<pre><code class="language-diatom">a = 1
+a // 10
+Just${1}
+[1 2 3]$[2] -- 2
+[1 2 3 4].len$()
+1,2,3 -- tuple
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="if-expression"><a class="header" href="#if-expression">If Expression</a></h1>
+<p>Condition code execution.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+IfExpression:<br />
+if <code>&lt;expression&gt;</code> then (<code>&lt;statement&gt;</code>)*<br />
+(elsif <code>&lt;expression&gt;</code> then (<code>&lt;statement&gt;</code>)*)*<br />
+end</p>
+</blockquote>
+<h2 id="examples-2"><a class="header" href="#examples-2">Examples</a></h2>
+<pre><code class="language-diatom">if true then
+    1
+end 
+
+a = 5
+
+if a &gt; 5 then 
+    1
+elsif a &gt; 4 then 
+    -1
+else 
+    0
+end
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="case-expression"><a class="header" href="#case-expression">Case Expression</a></h1>
+<p>Case expression is used to perform pattern matching.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+CaseExpression:<br />
+case <code>&lt;expression&gt;</code> of<br />
+( <code>&lt;pattern&gt;</code> ( if <code>&lt;expression&gt;</code> )? =&gt; <code>&lt;expression&gt;</code> )*<br />
+end</p>
+<p>Pattern: 
+<code>&lt;pattern&gt;</code> \| <code>&lt;pattern&gt;</code><br />
+| <code>&lt;pattern&gt;</code> , <code>&lt;pattern&gt;</code><br />
+| <code>&lt;constructor&gt;</code> $ \{ <code>&lt;variable&gt;</code>* \}<br />
+| <code>&lt;constant&gt;</code><br />
+| <code>&lt;identifier&gt;</code> @ <code>&lt;pattern&gt;</code><br />
+| \( <code>&lt;pattern&gt;</code> \)</p>
+<p>Priority: <code>()</code> &gt; <code>@</code> &gt; <code>,</code> &gt; <code>|</code></p>
+</blockquote>
+<h2 id="examples-3"><a class="header" href="#examples-3">Examples</a></h2>
+<pre><code class="language-diatom">case Just${1} of 
+    x @(Just${1} | Just${_}) =&gt; true
+    Nothing =&gt; false
+end
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="block-expression"><a class="header" href="#block-expression">Block Expression</a></h1>
+<p>Multiple statements can be grouped as a block. A block also has its own scope.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+BlockExpression:<br />
+begin ( <code>&lt;statement&gt;</code> )* end</p>
+</blockquote>
+<h2 id="examples-4"><a class="header" href="#examples-4">Examples</a></h2>
+<pre><code class="language-diatom">begin
+    a = 1
+    if a &gt; 0 then
+        return 0
+    else 
+        return 1
+    end
+end
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lambda-expression"><a class="header" href="#lambda-expression">Lambda Expression</a></h1>
+<p>Lambda expression is used as an anonymous function.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+LambdaExpression:<br />
+fn ( <code>&lt;identifier&gt;</code> )* = <code>&lt;expression&gt;</code></p>
+</blockquote>
+<p>Examples:</p>
+<pre><code class="language-diatom">fn x y z = x + y + z
+
+-- To use multiple expression/statements
+-- Group them in a block expression
+fn x y = begin
+    if x &gt; 10 then
+        return y
+    end
+    until x &gt; 10 do
+        y = y + x
+        x = x + 1
+    end
+    y
+end
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="require-expression"><a class="header" href="#require-expression">Require Expression</a></h1>
+<p>Diatom allows to import another file with require expression. This expression will return a module contains all variables after executing that file. This expression does not introduce any variables to global scope.</p>
+<blockquote>
+<p><strong>Syntax</strong>
+RequireExpression:<br />
+require <code>&lt;string literal&gt;</code></p>
+</blockquote>
+<p>Note that the string literal must be in <code>a.b.c</code> or <code>a</code> form. There may not be characters except <code>[a-zA-Z0-9_\\-\\.]</code>.</p>
+<h2 id="examples-5"><a class="header" href="#examples-5">Examples</a></h2>
+<pre><code class="language-diatom">util = require &quot;myModule.util&quot;
+lib = require &quot;lib&quot;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="statements"><a class="header" href="#statements">Statements</a></h1>
+<p>Statement in diatom always return <code>()</code> (aka unit type).</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+Expression<br />
+| DataStatement<br />
+| FunctionStatement<br />
+| LoopStatement<br />
+| FlowStatement</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="data-type-statement"><a class="header" href="#data-type-statement">Data Type Statement</a></h1>
+<p>Keyword <code>data</code> is used to create custom data types.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+DataStatement:<br />
+data <code>&lt;identifier&gt;</code> =<br />
+( <code>&lt;identifier&gt;</code> ( <code>&lt;identifier&gt;</code> )* )+<br />
+<code>&lt;FunctionStatement&gt;</code>*<br />
+end</p>
+</blockquote>
+<h2 id="examples-6"><a class="header" href="#examples-6">Examples</a></h2>
+<pre><code class="language-diatom">-- Data with multiple variants
+data Maybe =
+    Just x    -- Create a constructor called 'Just' with a member called 'x'
+    | Nothing -- Create a constructor called 'Nothing' with no member
+
+    -- followed by member functions
+    def is_just(self) = 
+        case self of
+            Just${_} =&gt; true
+            _ =&gt; false
+        end
+    end
+end
+
+-- Call constructors
+-- with named parameters
+Just${x: 1}
+-- without names
+Just${1}
+
+-- Data Constructor may have the same name as the data type
+data Circle = Circle r end
+data Rect = Rect x y
+    def area(self) = 
+        self.x * self.y
+    end
+end
+
+Circle${1}
+Rect${ 10 20 }
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="loop-statement"><a class="header" href="#loop-statement">Loop Statement</a></h1>
+<p>There are three types of loops in diatom:</p>
+<ul>
+<li><code>loop</code>: infinite loop</li>
+<li><code>until</code>: loop until a break condition is met</li>
+<li><code>for</code>: loop through an Iterator</li>
+</ul>
+<blockquote>
+<p><strong>Syntax</strong><br />
+LoopStatement:<br />
+loop <code>&lt;statement&gt;</code>* end<br />
+| until <code>&lt;expression&gt;</code> do <code>&lt;statement&gt;</code>* end<br />
+| for <code>&lt;expression&gt;</code> in <code>&lt;expression&gt;</code> do<br />
+<code>&lt;statement&gt;</code>*<br />
+end</p>
+</blockquote>
+<h2 id="examples-7"><a class="header" href="#examples-7">Examples</a></h2>
+<pre><code class="language-diatom">a = 0
+
+loop 
+    if a &gt; 5 then
+        break
+    else 
+        a = a + 1
+    end
+end
+
+until a &gt; 5 do
+    a = a + 1
+end
+
+for i,v in (1..10).iter$().enumerate$() do
+    a = a + i + v*a
+end
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="function-statement"><a class="header" href="#function-statement">Function Statement</a></h1>
+<p>Function statement declares a function and bind the name to that function in current scope.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+FunctionStatement:<br />
+def <code>&lt;identifier&gt;</code> \( <code>&lt;identifier&gt;</code>* \) =<br />
+<code>&lt;statement&gt;</code>*<br />
+end</p>
+</blockquote>
+<h2 id="examples-8"><a class="header" href="#examples-8">Examples</a></h2>
+<pre><code class="language-diatom">def f(a b c) =
+    a + b + c 
+end
+
+def f () =
+    g$(x)
+where
+    g = fn x = x.upper$()
+    x = &quot;str&quot;
+end
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="flow-control-statement"><a class="header" href="#flow-control-statement">Flow Control Statement</a></h1>
+<p>These statement alters execution flow in a function or a lambda expression.</p>
+<blockquote>
+<p><strong>Syntax</strong><br />
+FlowStatement:<br />
+break<br />
+| continue<br />
+| return <code>&lt;expression&gt;</code>?</p>
+</blockquote>
+<h2 id="examples-9"><a class="header" href="#examples-9">Examples</a></h2>
+<pre><code class="language-diatom">def f () = 
+    a = 1
+    if a &gt; 3 then
+        return true -- return a value
+    end
+    return -- Return nothing (nil)
+end
+
+for i in 1..10 do
+    if i &lt; 5 then
+        continue
+    else 
+        break
+    end
+end
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="names"><a class="header" href="#names">Names</a></h1>
+<p>This chapter is about diatom's namespace and name resolution.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scope"><a class="header" href="#scope">Scope</a></h1>
+<p>Diatom use lexical scope. That means all names are resolved according lexical context.</p>
+<h2 id="variable-declaration"><a class="header" href="#variable-declaration">Variable Declaration</a></h2>
+<p>Diatom does not require variable to be declared before using. Variable is automatically declared the first time it is assigned with a value.</p>
+<h2 id="variable-shadowing"><a class="header" href="#variable-shadowing">Variable Shadowing</a></h2>
+<p>Diatom disallows local variable to shadow outside ones. Names will always be resolved to outside ones if available. This is also applied to function parameters. They must not be the same name as a outside variable.</p>
+<p>For example,</p>
+<pre><code class="language-diatom">a = []
+
+def f() =
+    a.push$(2)
+end
+
+f$()
+</code></pre>
+<p><code>a</code> will have value <code>[2]</code> after execution.</p>
+<h2 id="local-scope"><a class="header" href="#local-scope">Local Scope</a></h2>
+<p>The following grammars enable local scope:</p>
+<ul>
+<li>Block: <code>begin</code> ... <code>end</code></li>
+<li>Function: <code>def</code> ... <code>end</code></li>
+<li>Lambda: <code>fn</code></li>
+</ul>
+<p>Variable declared in local scope is not available in outside scopes.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="binding-and-capture"><a class="header" href="#binding-and-capture">Binding and Capture</a></h1>
+<h2 id="discussion-required"><a class="header" href="#discussion-required">!Discussion Required!</a></h2>
+<p>Diatom will always capture variable by reference unless they are primitive types or string.</p>
+<p>These types are considered as immutable so that they will not be accidentally modified.
+This includes:</p>
+<ul>
+<li>Int </li>
+<li>Float </li>
+<li>Boolean</li>
+<li>String</li>
+<li>Unit ( It only has one possible value anyway. )</li>
+</ul>
+<p><strong>Note</strong>: In the future version of diatom, this behavior will be applied to all instance of <code>Immutable</code> class.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="module"><a class="header" href="#module">Module</a></h1>
+<p>Diatom can load external diatom source code files as modules.</p>
+<h2 id="search-path"><a class="header" href="#search-path">Search Path</a></h2>
+<p>Search path is a set of paths where diatom compiler looking for possible modules. There are several ways to add search path.</p>
+<ul>
+<li>Relative path: When parsing a file, the file's directory is automatically added to search path and takes the highest priority.</li>
+<li>Other search path: Search path can also be specified by host.</li>
+<li>Console: Diatom Console will add current work directory to search path.</li>
+</ul>
+<h2 id="resolve-rule"><a class="header" href="#resolve-rule">Resolve Rule</a></h2>
+<p>Module string like &quot;a.b.c&quot; will be resolved to <code>&lt;search path&gt;/a/b/c.dm</code> or <code>&lt;search path&gt;/a/b/c/mod.dm</code>. Diatom will always search module according to priority and immediately return when the first module matched is found.</p>
+<p>Diatom will only execute a module once and use cached value when the same module is loaded.</p>
+<h2 id="access-module-members"><a class="header" href="#access-module-members">Access Module Members</a></h2>
+<p>Require expression will return a module. All variables declared in the module file will be a member of the module and be accessed via <code>.</code> operator.</p>
+<pre><code class="language-diatom">-- lib.dm
+version = &quot;0.1.1&quot;
+
+def sum (x y z) =
+    x + y + z
+end
+
+-- main.dm
+lib = require &quot;lib&quot;
+lib.version
+lib.sum$( 1 2 3 )
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
